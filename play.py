@@ -173,67 +173,31 @@ def is_cell(event):
 
 def play(event):
     if is_cell(event) == 11 and field[1][1] == '-':
-        x1 = 0
-        y1 = 0
-        x2 = 100
-        y2 = 100
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 0, 0, 100, 100)
         field[1][1] = 'X'
     elif is_cell(event) == 12 and field[1][2] == '-':
-        x1 = 100
-        y1 = 0
-        x2 = 200
-        y2 = 100
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 100, 0, 200, 100)
         field[1][2] = 'X'
     elif is_cell(event) == 13 and field[1][3] == '-':
-        x1 = 200
-        y1 = 0
-        x2 = 300
-        y2 = 100
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 200, 0, 300, 100)
         field[1][3] = 'X'
     elif is_cell(event) == 21 and field[2][1] == '-':
-        x1 = 0
-        y1 = 100
-        x2 = 100
-        y2 = 200
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 0, 100, 100, 200)
         field[2][1] = 'X'
     elif is_cell(event) == 22 and field[2][2] == '-':
-        x1 = 100
-        y1 = 100
-        x2 = 200
-        y2 = 200
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 100, 100, 200, 200)
         field[2][2] = 'X'
     elif is_cell(event) == 23 and field[2][3] == '-':
-        x1 = 200
-        y1 = 100
-        x2 = 300
-        y2 = 200
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 200, 100, 300, 200)
         field[2][3] = 'X'
     elif is_cell(event) == 31 and field[3][1] == '-':
-        x1 = 0
-        y1 = 200
-        x2 = 100
-        y2 = 300
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 0, 200, 100, 300)
         field[3][1] = 'X'
     elif is_cell(event) == 32 and field[3][2] == '-':
-        x1 = 100
-        y1 = 200
-        x2 = 200
-        y2 = 300
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 100, 200, 200, 300)
         field[3][2] = 'X'
     elif is_cell(event) == 33 and field[3][3] == '-':
-        x1 = 200
-        y1 = 200
-        x2 = 300
-        y2 = 300
-        draw_X(event, x1, y1, x2, y2)
+        draw_X(event, 200, 200, 300, 300)
         field[3][3] = 'X'
     else:
         print('Промазал')
