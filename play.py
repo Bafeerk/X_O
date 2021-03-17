@@ -1,8 +1,5 @@
 import tkinter as tk
 from model import *
-free = 0
-row = 0
-dia = 0
 field = [
          [0, '1', '2', '3'],
          [1, '-', '-', '-'],
@@ -10,15 +7,21 @@ field = [
          [3, '-', '-', '-']
         ]
 
+def draw_O(i, j, x_1, y_1, x_2, y_2):
+    """
+        Изменяет массив field и рисует окружность на указанных кординатах
+        Получает натуральные числа. i, j от 1 до 3.
+    """
+    print('draw_0')
+    field[i][j] = 'O'
+    play_zone.create_oval(x_1, y_1, x_2, y_2)
+
 def computer(field):
     """
         Имитирует ход компьютера, ставит 'O' на свободное место '-'
         Принимает массив
         Ничего не возвращает
     """
-    global row
-    global col
-    global dia
     row = computer_cheks_rows(field, 'X')
     col = computer_cheks_columns(field, 'X')
     dia = computer_cheks_diagonals(field, 'X')
@@ -31,78 +34,60 @@ def computer(field):
         play_zone.create_oval(100, 100, 200, 200)
 ## Проверяет наличие двух 'O' подряд
     elif row_1 == '11' or col_1 == '11' or dia_1 == '11':
-        field[1][1] = 'O'
         print(11)
-        play_zone.create_oval(0, 0, 100, 100)
+        draw_O(1, 1, 0, 0, 100, 100)
     elif row_1 == '12' or col_1 == '12':
-        field[1][2] = 'O'
         print(12)
-        play_zone.create_oval(100, 0, 200, 100)
+        draw_O(1, 2, 100, 0, 200, 100)
     elif row_1 == '13' or col_1 == '13' or dia_1 == '13':
-        field[1][3] = 'O'
         print(13)
-        play_zone.create_oval(200, 0, 300, 100)
+        draw_O(1, 3, 200, 0, 300, 100)
     elif row_1 == '21' or col_1 == '21':
-        field[2][1] = 'O'
         print(21)
-        play_zone.create_oval(0, 100, 100, 200)
+        draw_O(2, 1, 0, 100, 100, 200)
     elif row_1 == '22' or col_1 == '22' or dia_1 == '22':
-        field[2][2] = 'O'
         print(22)
-        play_zone.create_oval(100, 100, 200, 200)
+        draw_O(2, 2, 100, 100, 200, 200)
     elif row_1 == '23' or col_1 == '23':
-        field[2][3] = 'O'
         print(23)
-        play_zone.create_oval(200, 100, 300, 200)
+        draw_O(2, 3, 200, 100, 300, 200)
     elif row_1 == '31' or col_1 == '31' or dia_1 == '31':
-        field[3][1] = 'O'
         print(31)
-        play_zone.create_oval(0, 200, 100, 300)
+        draw_O(3, 1, 0, 200, 100, 300)
     elif row_1 == '32' or col_1 == '32':
-        field[3][2] = 'O'
         print(32)
-        play_zone.create_oval(100, 200, 200, 300)
+        draw_O(3, 2, 100, 200, 200, 300)
     elif row_1 == '33' or col_1 == '33' or dia_1 == '33':
-        field[3][3] = 'O'
         print(33)
-        play_zone.create_oval(200, 200, 300, 300)
+        draw_O(3, 3, 200, 200, 300, 300)
 ## Проверяет наличие дух 'X' подряд
     elif row == '11' or col == '11' or dia == '11':
-        field[1][1] = 'O'
         print(11)
-        play_zone.create_oval(0, 0, 100, 100)
+        draw_O(1, 1, 0, 0, 100, 100)
     elif row == '12' or col == '12':
-        field[1][2] = 'O'
         print(12)
-        play_zone.create_oval(100, 0, 200, 100)
+        draw_O(1, 2, 100, 0, 200, 100)
     elif row == '13' or col == '13' or dia == '13':
-        field[1][3] = 'O'
         print(13)
-        play_zone.create_oval(200, 0, 300, 100)
+        draw_O(1, 3, 200, 0, 300, 100)
     elif row == '21' or col == '21':
-        field[2][1] = 'O'
         print(21)
-        play_zone.create_oval(0, 100, 100, 200)
+        draw_O(2, 1, 0, 100, 100, 200)
     elif row == '22' or col == '22' or dia == '22':
-        field[2][2] = 'O'
         print(22)
-        play_zone.create_oval(100, 100, 200, 200)
+        draw_O(2, 2, 100, 100, 200, 200)
     elif row == '23' or col == '23':
-        field[2][3] = 'O'
         print(23)
-        play_zone.create_oval(200, 100, 300, 200)
+        draw_O(2, 3, 200, 100, 300, 200)
     elif row == '31' or col == '31' or dia == '31':
-        field[3][1] = 'O'
         print(31)
-        play_zone.create_oval(0, 200, 100, 300)
+        draw_O(3, 1, 0, 200, 100, 300)
     elif row == '32' or col == '32':
-        field[3][2] = 'O'
         print(32)
-        play_zone.create_oval(100, 200, 200, 300)
+        draw_O(3, 2, 100, 200, 200, 300)
     elif row == '33' or col == '33' or dia == '33':
-        field[3][3] = 'O'
         print(33)
-        play_zone.create_oval(200, 200, 300, 300)
+        draw_O(3, 3, 200, 200, 300, 300)
 ## Ставит 'O' на первую попавшуюся пустую клетку
     else:
         global free
