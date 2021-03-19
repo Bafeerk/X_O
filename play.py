@@ -7,6 +7,27 @@ field = [
          [3, '-', '-', '-']
         ]
 
+def computer_begins():
+    f = open('debut.txt', 'r')
+    begin = f.read(1)
+    print(begin)
+    if begin == '1':
+        field[2][2] = 'O'
+        play_zone.create_oval(100, 100, 200, 200)
+    f.close()
+
+def statistics():
+    f = open('statistic.txt', 'r')
+    number_of_birds = f.readline()
+    f.close()
+    number_of_birds = int(number_of_birds)
+    number_of_birds += 1
+    number_of_birds = str(number_of_birds)
+    f = open('statistic.txt', 'w')
+    f.write(number_of_birds)
+    f.close()
+    
+
 def draw_O(i, j, x_1, y_1, x_2, y_2):
     """
         Изменяет массив field и рисует окружность на указанных кординатах
@@ -191,15 +212,28 @@ def play(event):
     if is_win(field, 'X'):
         draw_field(field)
         print('You win')
-
+        f = open('debut.txt', 'w')
+        f.write('0')
+        f.close()
+        statistics()
+        win.destroy()
+        return
+        
     computer(field)
 
     if is_win(field, 'O'):
        draw_field(field)
        print('Поздравляем, вы проиграли')
+       f = open('debut.txt', 'w')
+       f.write('1')
+       f.close()
+       statistics()
+       win.destroy()
 
     if nobody_win(field) == False:
         print('Ничья')
+        statistics()
+        win.destroy()
 
     draw_field(field)
     
@@ -216,6 +250,8 @@ play_zone.create_line(100, 0, 100, 300, width = 1)
 play_zone.create_line(200, 0, 200, 300, width = 1)
 
 win.bind('<Button-1>', play)
+
+computer_begins()
 
 
 win.mainloop()
